@@ -1,0 +1,28 @@
+{
+	"name": "adonis-build-action",
+	"version": "0.0.1",
+	"description": "A GitHub Action that builds Adonis projects and optionally also pushes the generated code to a different branch on your repository",
+	"main": "src/index.mjs",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/dmdboi/adonis-build-action.git"
+	},
+	"keywords": [
+		"adonis",
+		"adonisjs",
+		"github action",
+		"build"
+	],
+	"author": "Max Diamond <hello@maxdiamond.co.uk>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/dmdboi/adonis-build-action/issues"
+	},
+	"homepage": "https://github.com/dmdboi/adonis-build-action#readme",
+	"dependencies": {
+		"@actions/core": "^1.10.0",
+		"@actions/exec": "^1.1.1",
+		"@actions/github": "^5.1.1",
+		"@actions/io": "^1.1.2"
+	}
+}

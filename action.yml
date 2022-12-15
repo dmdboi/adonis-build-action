@@ -1,0 +1,20 @@
+name: 'Adonis Build Action'
+description: 'Build Adonis Projects'
+author: 'Max Diamond'
+branding:
+  color: 'purple'
+  icon: 'loader'
+inputs: 
+  pushToBranch: 
+    description: 'Whether or not to push the compiled code to a different branch'
+    required: false
+  branch:
+    description: 'The name of the branch the action should push the compiled code'
+    required: false
+    default: 'dist'
+  githubToken:
+    description: 'Your GitHub secret token'
+    required: false
+runs: 
+  using: 'node16'
+  main: src/index.js
