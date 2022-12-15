@@ -17,7 +17,7 @@ jobs:
             - name: Checkout project
               uses: actions/checkout@v3
             - name: Build and push
-              uses: dmdboi/adonis-build-action
+              uses: dmdboi/adonis-build-action@v1
               with:
                 pushToBranch: true # optional; can either be true or false | defaults to false
                 branch: 'dist' # optional; the name of the branch the action should push the compiled code to | defaults to dist
