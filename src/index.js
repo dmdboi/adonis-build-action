@@ -81,9 +81,12 @@ if (pushToBranch == true && !githubToken)
 
     // Push files
     core.info("Pushing new changes");
-    await exec(`git push origin :${branchName}`, [], {
-      cwd: `branch-${branchName}`,
-    });
+    if (branchExists) {
+      await exec(`git push origin :${branchName}`, [], {
+        cwd: `branch-${branchName}`,
+      });
+    }
+
     await exec(`git subtree push --prefix ${outDir} origin ${branchName}`, [], {
       cwd: `branch-${branchName}`,
     });
