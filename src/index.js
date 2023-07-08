@@ -2,7 +2,6 @@ const core = require("@actions/core");
 const github = require("@actions/github");
 const io = require("@actions/io");
 const { exec } = require("@actions/exec");
-const { access } = require("fs").promises;
 const { join } = require("path");
 
 // Inputs
@@ -16,14 +15,9 @@ if (pushToBranch == true && !githubToken)
   return exit("A GitHub secret token is a required input for pushing code (hint: use ${{ secrets.GITHUB_TOKEN }} )");
 
 (async () => {
-  const tsconfigPath = join(directory, "tsconfig.json");
+  const tsconfigPath = join(directory, "../tsconfig.json");
 
   try {
-    await access(tsconfigPath);
-
-    const tsconfig = require(tsconfigPath);
-    const outDir = tsconfig.compilerOptions.outDir ? tsconfig.compilerOptions.outDir : directory;
-
     /** Install Dependencies */
     core.info("Installing dependencies");
     await exec(`npm i`, [], { cwd: directory }).catch((_err) => {});
@@ -73,7 +67,7 @@ if (pushToBranch == true && !githubToken)
 
     // Commit files
     core.info("Adding and commiting files");
-    await exec(`git add ${outDir}/*"`, [], { cwd: `branch-${branchName}` });
+    await exec(`git add build/*"`, [], { cwd: `branch-${branchName}` });
     // We use the catch here because sometimes the code itself may not have changed
     await exec(`git commit -m "build: ${github.context.sha}"`, [], {
       cwd: `branch-${branchName}`,
