@@ -81,7 +81,7 @@ if (pushToBranch == true && !githubToken)
       });
     }
 
-    await exec(`git subtree push --prefix ${outDir} origin ${branchName}`, [], {
+    await exec(`git subtree push --prefix build origin ${branchName}`, [], {
       cwd: `branch-${branchName}`,
     });
 
